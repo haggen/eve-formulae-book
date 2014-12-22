@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: application/json; charset=utf-8');
+
 $source = file_get_contents($file);
 $data = json_decode($source, true);
 
