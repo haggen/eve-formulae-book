@@ -9,6 +9,8 @@ function find($data, $fn) {
   foreach($data as $i) {
     if($fn($i)) return [$i];
   }
+
+  return [];
 }
 
 if(isset($_GET['name'])) {
