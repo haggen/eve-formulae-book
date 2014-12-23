@@ -25,7 +25,7 @@ app.get('/', function(request, response) {
     querystring: {
       id: 'integer, find by id',
       name: 'string, find by exact name',
-      match: 'string, match name by regular expression, case insensitive'
+      match: 'string, match name by regular expression, case insensitive',
     },
     examples: [
       base + '/regions.json?name=Sinq%20Laison',
@@ -33,7 +33,7 @@ app.get('/', function(request, response) {
       base + '/types.json?match=miner',
     ]
   });
-};
+});
 
 app.get('/:collection.json', function(request, response) {
   if('name' in request.query) {
