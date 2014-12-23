@@ -46,7 +46,7 @@ app.get('/:collection.json', function(request, response) {
     })]);
   } else if('match' in request.query) {
     response.json(database[request.params.collection].filter(function(item) {
-      return item.name.match(new RegExp(request.query.q, 'i'));
+      return item.name.match(new RegExp(request.query.match, 'i'));
     }));
   } else {
     response.json(database[request.params.collection]);
