@@ -4,6 +4,6 @@ Array.prototype.find = function(fn, i) {
   if(fn(this[i])) {
     return this[i];
   } else {
-    return this.length > i ? this.find(fn, i + 1) : null;
+    return this.length - 1 > i ? this.find(fn, i + 1) : null;
   }
 };
