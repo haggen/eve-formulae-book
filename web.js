@@ -19,8 +19,8 @@ app.get('/', function(request, response) {
   response.json({
     collections: {
       regions: base + 'regions.json',
-      regions: base + 'types.json',
-      regions: base + 'systems.json',
+      types: base + 'types.json',
+      systems: base + 'systems.json',
     },
     querystring: {
       id: 'integer, find by id',
