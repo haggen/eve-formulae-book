@@ -28,9 +28,9 @@ app.get('/', function(request, response) {
       match: 'string, match name by regular expression, case insensitive',
     },
     examples: [
-      base + '/regions.json?name=Sinq%20Laison',
-      base + '/systems.json?id=30042715',
-      base + '/types.json?match=miner',
+      base + 'regions.json?name=Sinq%20Laison',
+      base + 'systems.json?id=30042715',
+      base + 'types.json?match=miner',
     ]
   });
 });
