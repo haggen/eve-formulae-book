@@ -8,10 +8,6 @@ class MarketApi
 
   base_uri 'http://api.eve-central.com'
 
-  parser -> (body) do
-    JSON.parse(body)
-  end
-
   def self.price_of(minimum, item_id, location_id)
     params = {'typeid' => item_id}
 
@@ -29,12 +25,16 @@ class MarketApi
 
     response = get('/api/marketstat/json', :query => params)
 
-    raw = JSON.parse(response.body)
+    if response.code == 200
+      raw = JSON.parse(response.body)
 
-    {
-      :buy => raw[0]['buy'].slice('min', 'max', 'avg'),
-      :sell => raw[0]['sell'].slice('min', 'max', 'avg'),
-      :all => raw[0]['all'].slice('min', 'max', 'avg')
-    }
+      {
+        :buy => raw[0]['buy'].slice('min', 'max', 'avg'),
+        :sell => raw[0]['sell'].slice('min', 'max', 'avg'),
+        :all => raw[0]['all'].slice('min', 'max', 'avg')
+      }
+    else
+      nil
+    end
   end
 end

@@ -31,5 +31,5 @@ get '/market' do
   item = EveDb.find_item(params[:item])
   location = EveDb.find_location(params[:location])
 
-  json MarketApi.price_of(params[:minimum], item[:id], location && location[:id])
+  json MarketApi.price_of(params[:minimum], item[:id], location[:id])
 end
