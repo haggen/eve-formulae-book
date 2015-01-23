@@ -1,11 +1,17 @@
 require 'sinatra'
 require 'sinatra/json'
-
+require 'rack/cors'
 require 'newrelic_rpm'
 
 require './eve_db'
 require './eve_api'
 require './market_api'
+
+use Rack::Cors do
+  allow do
+    origins('*') and resource('/*', :headers => :any, :methods => :get)
+  end
+end
 
 # GET /market?item=Veldspar&minimum=10000&location=Sinq%20Laison
 #
@@ -27,6 +33,7 @@ require './market_api'
 #   }
 # }
 #
+
 get '/market' do
   item = EveDb.find_item(params[:item])
   location = EveDb.find_location(params[:location])
