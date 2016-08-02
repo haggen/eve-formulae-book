@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.3.1'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
@@ -10,3 +10,7 @@ gem 'nokogiri'
 gem 'activesupport'
 gem 'puma'
 gem 'rack-cors'
+
+group :development do
+  gem 'foreman'
+end

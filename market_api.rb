@@ -3,7 +3,7 @@ require 'httparty'
 require 'active_support'
 require 'active_support/all'
 
-class MarketApi
+class MarketAPI
   include HTTParty
 
   base_uri 'http://api.eve-central.com'
@@ -23,15 +23,15 @@ class MarketApi
       end
     end
 
-    response = get('/api/marketstat/json', :query => params)
+    response = get('/api/marketstat/json', query: params)
 
     if response.code == 200
       raw = JSON.parse(response.body)
 
       {
-        :buy => raw[0]['buy'].slice('min', 'max', 'avg'),
-        :sell => raw[0]['sell'].slice('min', 'max', 'avg'),
-        :all => raw[0]['all'].slice('min', 'max', 'avg')
+        sell: raw[0]['sell'].slice('min', 'max', 'avg'),
+        buy: raw[0]['buy'].slice('min', 'max', 'avg'),
+        all: raw[0]['all'].slice('min', 'max', 'avg')
       }
     else
       nil

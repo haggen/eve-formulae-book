@@ -3,8 +3,11 @@ require 'sinatra/json'
 require 'newrelic_rpm'
 
 require './eve_db'
-require './eve_api'
 require './market_api'
+
+get '/' do
+  'Okay'
+end
 
 # GET /market?item=Veldspar&minimum=10000&location=Sinq%20Laison
 #
@@ -26,10 +29,15 @@ require './market_api'
 #   }
 # }
 #
-
 get '/market' do
-  item = EveDb.find_item(params[:item])
-  location = EveDb.find_location(params[:location])
+  item = EveDB.find_item(params[:item])
+  location = EveDB.find_location(params[:location])
 
-  json MarketApi.price_of(params[:minimum], item[:id], location[:id])
+  json MarketAPI.price_of(params[:minimum], item['typeID'], location['solarSystemID'] || location['regionID'])
+end
+
+post '/update' do
+  EveDB.update
+  EveDB.restore
+  json true
 end

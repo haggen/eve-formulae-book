@@ -1,1 +1,1 @@
-web: puma -p $PORT
+web: puma -p ${PORT:-3000}
