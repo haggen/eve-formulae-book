@@ -9,7 +9,8 @@ app.use(require('response-time')());
 app.use(require('morgan')('combined'));
 
 app.get('/', function (req, res) {
-  res.send('Okay');
+  const package = require('./package.json');
+  res.json(package);
 });
 
 // GET /item?name=Veldspar
@@ -33,10 +34,10 @@ app.get('/region', function (req, res) {
 // GET /system?name=Amarr
 //
 app.get('/system', function (req, res) {
-  const mapSolarSystem = eve.mapSolarSystems.find(function (mapSolarSystem) {
-    return mapSolarSystem.mapSolarSystemName === req.query.name;
+  const solarSystem = eve.mapSolarSystems.find(function (solarSystem) {
+    return solarSystem.solarSystemName === req.query.name;
   });
-  res.json(mapSolarSystem || {});
+  res.json(solarSystem || {});
 });
 
 function fetchMarketData(region, system, item, minimum, respond) {
@@ -56,6 +57,7 @@ function fetchMarketData(region, system, item, minimum, respond) {
       'Content-Length': Buffer.byteLength(payload),
     }
   };
+  console.log(options, payload);
   const request = https.request(options, function (response) {
     response.on('data', function(chunk) {
       response.setEncoding('utf-8');
@@ -80,14 +82,14 @@ app.get('/market', function (req, res) {
     return mapRegion.regionName === req.query.location;
   }) || {};
 
-  const mapSolarSystem = eve.mapSolarSystems.find(function (mapSolarSystem) {
-    return mapSolarSystem.mapSolarSystemName === req.query.location;
+  const solarSystem = eve.mapSolarSystems.find(function (solarSystem) {
+    return solarSystem.solarSystemName === req.query.location;
   }) || {};
 
   const respond = function (response) {
     res.json(response[0]);
   };
-  fetchMarketData(mapRegion.regionID, mapSolarSystem.mapSolarSystemID, invType.typeID, req.query.minimum, respond);
+  fetchMarketData(mapRegion.regionID, solarSystem.solarSystemID, invType.typeID, req.query.minimum, respond);
 });
 
 app.listen(process.env.PORT || 5000);
