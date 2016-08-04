@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+curl -s https://www.fuzzwork.co.uk/dump/latest/invTypes.csv.bz2 | bzip2 -dc >invTypes.csv
+curl -s https://www.fuzzwork.co.uk/dump/latest/mapSolarSystems.csv.bz2 | bzip2 -dc >mapSolarSystems.csv
+curl -s https://www.fuzzwork.co.uk/dump/latest/mapRegions.csv.bz2 | bzip2 -dc >mapRegions.csv

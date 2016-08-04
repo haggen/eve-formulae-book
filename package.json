@@ -1,0 +1,28 @@
+{
+  "name": "eve-formulae-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haggen/eve-formulae-book.git"
+  },
+  "author": "Arthur <arthur@corenzan.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haggen/eve-formulae-book/issues"
+  },
+  "homepage": "https://github.com/haggen/eve-formulae-book#readme",
+  "dependencies": {
+    "csv-parse": "^1.1.7",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.10.0",
+    "qs": "^6.2.1",
+    "response-time": "^2.3.1"
+  }
+}
