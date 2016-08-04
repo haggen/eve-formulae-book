@@ -19,4 +19,4 @@ const eve = {};
   });
 });
 
-module.exports = eve;
+exports = eve;
