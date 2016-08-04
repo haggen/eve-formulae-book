@@ -1,3 +1,5 @@
+require('newrelic');
+
 const express = require('express');
 const https = require('https');
 const qs = require('qs');
