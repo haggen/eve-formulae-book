@@ -25,7 +25,7 @@ function use() {
 
 var FormulaeBook = {};
 
-FormulaeBook.uri = 'https://eve-capsuleers-formulae-book.herokuapp.com';
+FormulaeBook.uri = 'https://eve-formulae-book.crz.li';
 
 FormulaeBook.fetch = function(path, params) {
   var cache = CacheService.getUserCache();
@@ -71,6 +71,8 @@ FormulaeBook.fetch = function(path, params) {
 * @customfunction
 */
 function EVEMARKET(value, bid, minimum, item, location) {
+  item = String(item).replace(/^\s+|\s+$/, '');
+  location = String(location).replace(/^\s+|\s+$/, '');
   var response = FormulaeBook.fetch('/market', {item: item, minimum: minimum, location: location});
   return response ? response[bid][value] : 0;
 }
