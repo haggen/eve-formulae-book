@@ -1,6 +1,6 @@
 /**
 * EVE Formulae Book
-* Version 1.0.0 2016-08-04T11:50:09-0300
+* Version 2.0.0 August 4, 2016
 * More on https://github.com/haggen/eve-formulae-book
 */
 
